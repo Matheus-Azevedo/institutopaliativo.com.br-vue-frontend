@@ -1,14 +1,16 @@
-import './assets/main.css';
-
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
+import { DatePicker } from 'ant-design-vue';
 
 import App from './App.vue';
-import loginRouter from './modules/login/router';
+import userRouter from './router';
+
+import 'ant-design-vue/dist/reset.css';
 
 const app = createApp(App);
 
+app.use(DatePicker);
 app.use(createPinia());
-app.use(loginRouter);
+app.use(userRouter);
 
 app.mount('#app');
