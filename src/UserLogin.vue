@@ -144,7 +144,7 @@ const onFinish = () => {
       loading.value = false;
       message.success('Login realizado com sucesso!');
 
-      if (userData.healthProfessionalRole) {
+      if (userData && userData.healthProfessionalRole) {
         switch (userData.healthProfessionalRole) {
           case 'MEDICO':
             router.push('/doctor');
@@ -171,10 +171,10 @@ const onFinish = () => {
             router.push('/social_worker');
             break;
           default:
-            router.push('/');
+            router.push('/login');
             break;
         }
-      } else {
+      } else if (userData && userData.role) {
         switch (userData.role) {
           case 'ADMIN':
             router.push('/admin');
@@ -183,9 +183,13 @@ const onFinish = () => {
             router.push('/receptionist');
             break;
           default:
-            router.push('/');
+            router.push('/login');
             break;
         }
+      } else {
+        // Token inválido ou sem os campos necessários
+        message.error('Token inválido. Verifique suas credenciais.');
+        router.push('/login'); // Ou outra rota segura
       }
     })
     .catch(error => {
