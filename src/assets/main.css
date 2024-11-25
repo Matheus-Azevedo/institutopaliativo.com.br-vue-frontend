@@ -1,0 +1,15 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Cores do sistema */
+:root {
+  --inst-azul: #01487f;
+  --inst-vermelho: #f05357;
+  --inst-amarelo: #f6b436;
+  --inst-marrom: #222222;
+  --inst-branco: #ffffff;
+}

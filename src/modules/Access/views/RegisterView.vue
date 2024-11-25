@@ -2,7 +2,7 @@
   <section id="register-container">
     <!-- Hero Image -->
     <div class="hero-image">
-      <img src="../src/assets/hero.jpg" alt="Hero Image" />
+      <img src="../../../assets/hero.jpg" alt="Hero Image" />
     </div>
 
     <!-- Register Form -->
@@ -16,7 +16,7 @@
         @finishFailed="onFinishFailed"
       >
         <div class="logo-image">
-          <img src="../src/assets/logo.png" alt="Logo" />
+          <img src="../../../assets/logo.png" alt="Logo" />
         </div>
         <a-form-item
           class="form-container-item"
@@ -203,7 +203,6 @@ const onFinish = () => {
       if (data.error) {
         throw new Error(data.message);
       }
-      console.log(data);
       loading.value = false;
       message.success('Registro realizado com sucesso!');
       router.push('/login');

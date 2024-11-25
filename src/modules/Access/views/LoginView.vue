@@ -2,7 +2,7 @@
   <section id="login-container">
     <!-- Hero Image -->
     <div class="hero-image">
-      <img src="../src/assets/hero.jpg" alt="Hero Image" />
+      <img src="../../../assets/hero.jpg" alt="Hero Image" />
     </div>
 
     <!-- Login Form -->
@@ -15,7 +15,7 @@
         @finishFailed="onFinishFailed"
       >
         <div class="logo-image">
-          <img src="../src/assets/logo.png" alt="Hero Image" />
+          <img src="../../../assets/logo.png" alt="Logo Image" />
         </div>
         <a-form-item
           label="Usuário"
@@ -143,9 +143,9 @@ const onFinish = () => {
 
       loading.value = false;
       message.success('Login realizado com sucesso!');
-
-      if (userData && userData.healthProfessionalRole) {
-        switch (userData.healthProfessionalRole) {
+      console.log(JSON.stringify(userData, null, 2));
+      if (userData && userData.role) {
+        switch (userData.role) {
           case 'MEDICO':
             router.push('/doctor');
             break;
@@ -170,12 +170,6 @@ const onFinish = () => {
           case 'ASSISTENTE_SOCIAL':
             router.push('/social_worker');
             break;
-          default:
-            router.push('/login');
-            break;
-        }
-      } else if (userData && userData.role) {
-        switch (userData.role) {
           case 'ADMIN':
             router.push('/admin');
             break;
@@ -188,7 +182,7 @@ const onFinish = () => {
         }
       } else {
         // Token inválido ou sem os campos necessários
-        message.error('Token inválido. Verifique suas credenciais.');
+        message.error('Acesso inválido. Verifique suas credenciais.');
         router.push('/login'); // Ou outra rota segura
       }
     })
